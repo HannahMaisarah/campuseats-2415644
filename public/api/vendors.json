@@ -1,0 +1,132 @@
+[
+  {
+    "id": "2416644-hannahs-cafe",
+    "name": "Hannah's Cafe",
+    "location": "Wadi Budi, IIUM Gombak",
+    "openHours": "8:00 am - 11:00 pm",
+    "isOpen": true,
+    "menu": [
+      { "id": "2416644-m1", "name": "Teh Tarik", "price": 2.5, "category": "Drinks", "popular": true, "available": true },
+      { "id": "2416644-m2", "name": "Iced Milo", "price": 3.5, "category": "Drinks", "popular": true, "available": true },
+      { "id": "2416644-m3", "name": "Nescafe", "price": 3.0, "category": "Drinks", "popular": false, "available": true },
+      { "id": "2416644-m4", "name": "Fresh Orange Juice", "price": 4.0, "category": "Drinks", "popular": false, "available": true },
+      { "id": "2416644-m5", "name": "Nasi Lemak", "price": 5.0, "category": "Main Course", "popular": true, "available": true },
+      { "id": "2416644-m6", "name": "Nasi Goreng Kampung", "price": 7.0, "category": "Main Course", "popular": true, "available": true },
+      { "id": "2416644-m7", "name": "Mee Goreng", "price": 6.0, "category": "Main Course", "popular": false, "available": true },
+      { "id": "2416644-m8", "name": "Chicken Chop", "price": 12.0, "category": "Main Course", "popular": true, "available": true },
+      { "id": "2416644-m9", "name": "French Fries", "price": 4.0, "category": "Snacks", "popular": true, "available": true },
+      { "id": "2416644-m10", "name": "Chicken Nuggets", "price": 5.0, "category": "Snacks", "popular": false, "available": true },
+      { "id": "2416644-m11", "name": "Kek Batik", "price": 1.5, "category": "Desserts", "popular": true, "available": true },
+      { "id": "2416644-m12", "name": "Chocolate Cake", "price": 5.0, "category": "Desserts", "popular": false, "available": true }
+    ]
+  },
+  {
+    "id": "2410829-barakah-cafe",
+    "name": "Barakah Cafe",
+    "location": "Axiata Tower, Kuala Lumpur",
+    "openHours": "7:00 am - 10:00 pm",
+    "isOpen": true,
+    "menu": [
+      { "id": "2410829-m1", "name": "Nasi Lemak Ayam", "description": "Coconut rice, fried chicken, sambal, egg and peanuts", "price": 7.5, "available": true, "category": "Rice", "popular": true },
+      { "id": "2410829-m2", "name": "Mee Goreng", "description": "Fried noodles with vegetables and egg", "price": 5.5, "available": true, "category": "Noodles", "popular": true },
+      { "id": "2410829-m3", "name": "Roti Canai", "description": "Flaky flatbread served with dhal curry", "price": 2.0, "available": true, "category": "Bread", "popular": false },
+      { "id": "2410829-m4", "name": "Nasi Goreng", "description": "Malaysian fried rice", "price": 6.0, "available": true, "category": "Rice", "popular": true },
+      { "id": "2410829-m5", "name": "Chicken Fried Rice", "description": "Fried rice with chicken", "price": 7.0, "available": true, "category": "Rice", "popular": false },
+      { "id": "2410829-m6", "name": "Maggi Goreng", "description": "Stir-fried instant noodles", "price": 5.0, "available": true, "category": "Noodles", "popular": false },
+      { "id": "2410829-m7", "name": "Teh Tarik", "description": "Malaysian pulled milk tea", "price": 2.5, "available": true, "category": "Drinks", "popular": true },
+      { "id": "2410829-m8", "name": "Milo Ais", "description": "Iced chocolate malt drink", "price": 3.0, "available": true, "category": "Drinks", "popular": false }
+    ]
+  },
+  {
+    "id": "2410829-coffee",
+    "name": "Campus Coffee Corner",
+    "location": "IIUM Campus Centre",
+    "openHours": "8:00 am - 8:00 pm",
+    "isOpen": true,
+    "menu": [
+      { "id": "2410829-m9", "name": "Iced Latte", "description": "Espresso with chilled milk", "price": 6.5, "available": true, "category": "Drinks", "popular": true },
+      { "id": "2410829-m10", "name": "Chocolate Muffin", "description": "Soft chocolate muffin", "price": 4.0, "available": true, "category": "Bakery", "popular": false },
+      { "id": "2410829-m11", "name": "Chicken Sandwich", "description": "Chicken sandwich with fresh vegetables", "price": 7.0, "available": true, "category": "Food", "popular": true }
+    ]
+  },
+  {
+    "id": "2417740-mamak-mia",
+    "name": "Mamak Mia",
+    "location": "Mahallah Asiah, Block CF",
+    "openHours": "7:00 am - 10:00 pm",
+    "isOpen": true,
+    "menu": [
+      { "id": "2417740-m1", "name": "Roti Canai", "description": "Fried flatbread with curry sauce", "price": 1.5, "category": "Bread", "popular": true, "available": true },
+      { "id": "2417740-m2", "name": "Teh Tarik", "description": "Hot milk tea with sugar", "price": 2.0, "category": "Beverage", "popular": true, "available": true },
+      { "id": "2417740-m3", "name": "Mee Goreng Mamak", "description": "Stir-fried noodles with vegetables and meat", "price": 2.5, "category": "Noodles", "popular": false, "available": true },
+      { "id": "2417740-m4", "name": "Cheese Naan", "description": "Grilled flatbread with cheese and herbs", "price": 2.0, "category": "Bread", "popular": true, "available": true },
+      { "id": "2417740-m5", "name": "Kopi O", "description": "Hot coffee", "price": 3.0, "category": "Beverage", "popular": false, "available": true },
+      { "id": "2417740-m6", "name": "Rojak Mee", "description": "Mixed noodle with peanuts sauce", "price": 2.5, "category": "Noodles", "popular": false, "available": true },
+      { "id": "2417740-m7", "name": "Nasi Goreng Kampung", "description": "Stir-fried rice with kangkung and anchovies", "price": 2.5, "category": "Rice", "popular": true, "available": true },
+      { "id": "2417740-m8", "name": "Cendol", "description": "Iced dessert with coconut milk, palm sugar, and green rice flour jelly", "price": 2.0, "category": "Dessert", "popular": true, "available": true },
+      { "id": "2417740-m9", "name": "Nasi Lemak", "description": "Coconut milk rice with sambal, anchovies, peanuts, and boiled egg", "price": 3.0, "category": "Rice", "popular": false, "available": true },
+      { "id": "2417740-m10", "name": "ABC (Ais Batu Campur)", "description": "Shaved ice with sweet corn, red beans, grass jelly, and syrup", "price": 2.0, "category": "Dessert", "popular": false, "available": true },
+      { "id": "2417740-m11", "name": "Maggi Goreng", "description": "Stir-fried instant noodles with egg and vegetables", "price": 2.5, "category": "Noodles", "popular": false, "available": true },
+      { "id": "2417740-m12", "name": "Roti Telur", "description": "Fried flatbread with egg inside, served with curry sauce", "price": 2.0, "category": "Bread", "popular": false, "available": true },
+      { "id": "2417740-m13", "name": "Milo Ais", "description": "Iced chocolate malt drink", "price": 2.5, "category": "Beverage", "popular": false, "available": true },
+      { "id": "2417740-m14", "name": "Nasi Ayam Goreng", "description": "Steamed rice with fried chicken, cucumber, and chili sauce", "price": 4.0, "category": "Rice", "popular": false, "available": true },
+      { "id": "2417740-m15", "name": "Telur Mata", "description": "Sunny-side-up fried egg, a side dish for any meal", "price": 1.0, "category": "Side Dish", "popular": false, "available": true }
+    ]
+  },
+
+  {
+  "id": "2418784-Kopi-Cup",
+  "name": "Kopi Cup",
+  "location": "Mahallah Bilal, Block C",
+  "openHours": "12:00 pm - 10:00 pm",
+  "isOpen": true,
+  "menu": [
+    { "id": "2418784-D1", "name": "Americano Black Panther", "price": 4.5,
+          "category": "Drinks", "popular": true, "available": true, "spiceLevel": 0,
+          "description": "Arabic Bean Aroma" },
+    { "id": "2418784-D2", "name": "Hazelnut Honey Latte", "price": 6.5,
+          "category": "Drinks", "popular": true, "available": true, "spiceLevel": 0,
+          "description": "Import Bean from Rome with honey syrup" },
+    { "id": "2418784-D3", "name": "Cappuccino Assasimo", "price": 9.0,
+          "category": "Drinks", "popular": true, "available": true, "spiceLevel": 0,
+          "description": "Viral Cappucino with the hint of Chocolate" },
+    { "id": "2418784-D4", "name": "Matcha Grass Latte", "price": 8.5,
+          "category": "Drinks", "popular": true, "available": true, "spiceLevel": 0,
+          "description": "Matcha from Japan brew with Milk" },
+    { "id": "2418784-D5", "name": "Mocha Muka", "price": 7.5,
+          "category": "Drinks", "popular": true, "available": true, "spiceLevel": 0,
+          "description": "Typical mocha with smell of coffee slap through your face" },
+
+    { "id": "2418784-P1", "name": "Caramel Mechamato Cake", "price": 8.0,
+          "category": "Pastries", "popular": true, "available": true, "spiceLevel": 0, 
+          "description": "Soft Chocolate Cake with Caramel Syrup" },
+    { "id": "2418784-P2", "name": "Vanilla Cream Bread", "price": 5.5,
+          "category": "Pastries", "popular": true, "available": true, "spiceLevel": 0, 
+          "description": "Japanese bread with vanilla cream" },
+    { "id": "2418784-P3", "name": "Thai Tea Sando", "price": 6.5,
+          "category": "Pastries", "popular": true, "available": true, "spiceLevel": 0, 
+          "description": "Japanese bread with thai tea cream" },
+
+    { "id": "2418784-C1", "name": "Green Tea Cookies", "price": 4.0,
+          "category": "Cookies", "popular": true, "available": true, "spiceLevel": 0, 
+          "description": "Black Cookies with Green Tea Toppings" },
+    { "id": "2418784-C2", "name": "Black Forest Cookies", "price": 4.0,
+          "category": "Cookies", "popular": true, "available": true, "spiceLevel": 0, 
+          "description": "Chocolate Cookies with black forest brownies" },
+    { "id": "2418784-C3", "name": "Chocolate Bucket Cookies", "price": 7.0,
+          "category": "Cookies", "popular": true, "available": true, "spiceLevel": 0,
+          "description": "Small Chocolate cookies in a bucket" },
+
+    { "id": "2418784-H1", "name": "Chicken Wrap", "price": 6.0,
+          "category": "Sandwiches", "popular": true, "available": true, "spiceLevel": 1,
+          "description": "Wrap with chicken, vegies, and mayo sauce" },
+    { "id": "2418784-H2", "name": "Beef Sandwich", "price": 3.5,
+          "category": "Sandwiches", "popular": true, "available": true, "spiceLevel": 2, 
+          "description": "Sandwich with hot beef, vegies, and mayo sauce" },
+    { "id": "2418784-H3", "name": "Carbonara Samyang Wrap", "price": 7.5,
+          "category": "Sandwiches", "popular": true, "available": true, "spiceLevel": 3, 
+          "description": "Wrap with carbonara samyang noodles, vegies, cheese, and mayo sauce" }
+  
+  ]
+}
+]

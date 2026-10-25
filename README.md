@@ -1,16 +1,19 @@
-# React + Vite
+# CampusEats
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Cafeteria pre-order app for BICS 3301 Cross-Platform Software Development (React + Vite).
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+    npm install
+    npm run dev
 
-## React Compiler
+## Progress
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Week 1: static UI (Header, VendorCard, MenuItemCard, Footer)
+- Week 2: data, props, lists, state (vendor selection, cart count)
+- Week 3: cart with quantities, validated checkout, menus fetched from `/api/vendors.json`
 
-## Expanding the ESLint configuration
+## Credits
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Vendor 1 (Hannah's Cafe) is my own shop (2416644).
+Vendors 2-3 from 2410829 and vendor 4 from 2417740.
