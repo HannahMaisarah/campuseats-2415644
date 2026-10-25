@@ -11,9 +11,9 @@ Cafeteria pre-order app for BICS 3301 Cross-Platform Software Development (React
 
 - Week 1: static UI (Header, VendorCard, MenuItemCard, Footer)
 - Week 2: data, props, lists, state (vendor selection, cart count)
-- Week 3: cart with quantities, validated checkout, menus fetched from `/api/vendors.json`
+- Week 3: cart with quantities, validated checkout, menus fetched from `/api/vendors.json`, final recheck and edit for week 2 & 1 coding
 
 ## Credits
 
 Vendor 1 (Hannah's Cafe) is my own shop (2416644).
-Vendors 2-3 from 2410829 and vendor 4 from 2417740.
+Vendors 2-3 from 2410829, vendor 4 from 2417740 and vendor 5 from 2418784.
