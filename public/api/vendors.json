@@ -6,18 +6,18 @@
     "openHours": "8:00 am - 11:00 pm",
     "isOpen": true,
     "menu": [
-      { "id": "2416644-m1", "name": "Teh Tarik", "price": 2.5, "category": "Drinks", "popular": true, "available": true },
-      { "id": "2416644-m2", "name": "Iced Milo", "price": 3.5, "category": "Drinks", "popular": true, "available": true },
-      { "id": "2416644-m3", "name": "Nescafe", "price": 3.0, "category": "Drinks", "popular": false, "available": true },
-      { "id": "2416644-m4", "name": "Fresh Orange Juice", "price": 4.0, "category": "Drinks", "popular": false, "available": true },
-      { "id": "2416644-m5", "name": "Nasi Lemak", "price": 5.0, "category": "Main Course", "popular": true, "available": true },
-      { "id": "2416644-m6", "name": "Nasi Goreng Kampung", "price": 7.0, "category": "Main Course", "popular": true, "available": true },
-      { "id": "2416644-m7", "name": "Mee Goreng", "price": 6.0, "category": "Main Course", "popular": false, "available": true },
-      { "id": "2416644-m8", "name": "Chicken Chop", "price": 12.0, "category": "Main Course", "popular": true, "available": true },
-      { "id": "2416644-m9", "name": "French Fries", "price": 4.0, "category": "Snacks", "popular": true, "available": true },
-      { "id": "2416644-m10", "name": "Chicken Nuggets", "price": 5.0, "category": "Snacks", "popular": false, "available": true },
-      { "id": "2416644-m11", "name": "Kek Batik", "price": 1.5, "category": "Desserts", "popular": true, "available": true },
-      { "id": "2416644-m12", "name": "Chocolate Cake", "price": 5.0, "category": "Desserts", "popular": false, "available": true }
+      { "id": "2416644-m1", "name": "Teh Tarik", "description": "Hot pulled milk tea, sweet and frothy", "price": 2.5, "category": "Drinks", "popular": true, "available": true, "spiceLevel": 0 },
+      { "id": "2416644-m2", "name": "Iced Milo", "description": "Cold chocolate malt drink served over ice", "price": 3.5, "category": "Drinks", "popular": true, "available": true, "spiceLevel": 0 },
+      { "id": "2416644-m3", "name": "Nescafe", "description": "Hot instant coffee with milk and sugar", "price": 3.0, "category": "Drinks", "popular": false, "available": true, "spiceLevel": 0 },
+      { "id": "2416644-m4", "name": "Fresh Orange Juice", "description": "Freshly squeezed orange juice, no added sugar", "price": 4.0, "category": "Drinks", "popular": false, "available": true, "spiceLevel": 0 },
+      { "id": "2416644-m5", "name": "Nasi Lemak", "description": "Coconut rice with sambal, anchovies, peanuts, cucumber and egg", "price": 5.0, "category": "Main Course", "popular": true, "available": true, "spiceLevel": 2 },
+      { "id": "2416644-m6", "name": "Nasi Goreng Kampung", "description": "Village-style fried rice with anchovies, kangkung and chilli", "price": 7.0, "category": "Main Course", "popular": true, "available": true, "spiceLevel": 2 },
+      { "id": "2416644-m7", "name": "Mee Goreng", "description": "Spicy fried yellow noodles with egg, tofu and vegetables", "price": 6.0, "category": "Main Course", "popular": false, "available": true, "spiceLevel": 3 },
+      { "id": "2416644-m8", "name": "Chicken Chop", "description": "Crispy fried chicken with black pepper sauce, fries and coleslaw", "price": 12.0, "category": "Main Course", "popular": true, "available": true, "spiceLevel": 0 },
+      { "id": "2416644-m9", "name": "French Fries", "description": "Golden crispy potato fries, lightly salted", "price": 4.0, "category": "Snacks", "popular": true, "available": true, "spiceLevel": 0 },
+      { "id": "2416644-m10", "name": "Chicken Nuggets", "description": "Crunchy breaded chicken nuggets with dipping sauce", "price": 5.0, "category": "Snacks", "popular": false, "available": true, "spiceLevel": 0 },
+      { "id": "2416644-m11", "name": "Kek Batik", "description": "No-bake chocolate biscuit cake, chilled", "price": 1.5, "category": "Desserts", "popular": true, "available": true, "spiceLevel": 0 },
+      { "id": "2416644-m12", "name": "Chocolate Cake", "description": "Moist chocolate sponge cake with chocolate frosting", "price": 5.0, "category": "Desserts", "popular": false, "available": true, "spiceLevel": 0 }
     ]
   },
   {
