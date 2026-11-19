@@ -37,3 +37,24 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
   - The AI set the spiceLevel values in vendors.json by guessing from the dish names, not from my real menu.
   - Its first Orders page layout was uneven: the price sat in the middle of each row instead of on the right. The AI found this when it checked the layout and fixed it by wrapping the item text and the price in separate spans.
   - The AI could not run npm install or open a browser, so it only checked that the code parsed and rendered. When I ran it, I got "Failed to resolve import ./pages/OrdersPage.jsx" because I had not created that file.
+
+
+## Week 5
+- Tools Used: ChatGPT
+
+- What I Asked AI
+ - How to implement Firebase Authentication using AuthProvider and AuthContext.
+ - How to complete the login and registration pages.
+ - How to implement ProtectedRoute to restrict access to authenticated users.
+ - How to update the Header component to display the logged-in user's name and provide a logout function.
+ - How to configure React Router to protect the cart and orders pages.
+
+- What I Kept or Changed
+ - Used the suggested Firebase authentication functions, including signInWithEmailAndPassword and signOut. 
+ - Implemented login and registration forms with loading and error handling.
+ - Added ProtectedRoute to prevent unauthenticated users from accessing the cart and orders pages.
+ - Updated the Header to display the user's name or email and provide a logout button.
+ - Reviewed and adapted the generated code to match the existing CampusEats project structure and imports.
+
+- One Thing AI Got Wrong
+ - Some suggested code needed adjustment to match the existing project structure and React Router imports. I checked the existing files and adapted the code before using it.
