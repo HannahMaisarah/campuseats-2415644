@@ -89,3 +89,29 @@ My personal feature allows customers to customise their food and drink preferenc
 My reflection
 
 In Week 4, I learned how to organise a React application using custom Hooks, Context, and routing. I implemented shared cart and order management through CartProvider and used localStorage to keep the information available after refreshing the page. I also developed my personal feature for food spice levels and drink temperature selection. One important challenge was ensuring that the same menu item with different preferences could be treated as separate cart items. This helped me understand how to manage more detailed application state and improve the user experience.
+
+# Week 5: Firebase Authentication and Protected Routes
+
+1. What is Firebase Authentication, and why is it useful in CampusEats?
+
+Firebase Authentication provides a way to manage user registration, login and logout securely. In CampusEats, I integrated Firebase Authentication to allow users to create accounts and sign in using their email and password. This helps identify users before they access features that require authentication, such as the cart and order pages. I also implemented an authentication context to make the user's authentication status available throughout the application.
+
+2. What is the purpose of AuthProvider and useAuth?
+
+AuthProvider manages the authentication state of the application using React Context. It uses Firebase's `onAuthStateChanged` to detect whether a user is signed in or signed out. The custom `useAuth` Hook allows other components to access the current user and authentication functions without passing props through multiple components. This makes authentication easier to manage across CampusEats.
+
+3. Why are Protected Routes important?
+
+Protected Routes prevent users who are not logged in from accessing certain pages. In CampusEats, I implemented a `ProtectedRoute` component to restrict access to the cart and orders pages. If a user tries to access these pages without signing in, the application redirects them to the login page. After successful login, the user can be redirected to the page they originally wanted to access.
+
+4. How does the application handle logout and cart data?
+
+I updated the Header component to display the logged-in user's name or email and provide a logout button. When the user logs out, Firebase Authentication signs them out and the cart is cleared using the `clearCart()` function in CartProvider. This prevents the previous cart items from remaining visible after logout. I also ensured that clearing the cart does not remove the existing order history.
+
+5. What challenges did I face during Week 5?
+
+One challenge I faced was configuring Firebase correctly because I encountered an `auth/invalid-api-key` error. I learned that Firebase environment variables must be configured correctly in the `.env.local` file and that the Vite development server needs to be restarted after changing them. I also encountered an issue where the Header styling changed after implementing authentication. I resolved this by preserving the original CSS class names while adding the login and logout functionality. Another improvement was adding a cart-clearing function to ensure that cart items are removed when a user logs out.
+
+My Reflection
+
+In Week 5, I learned how to integrate Firebase Authentication into my existing React application. I gained a better understanding of how authentication state can be shared using React Context and how Protected Routes can control access to different pages. I also learned how to connect Firebase authentication functions with the login, registration and logout processes. One important lesson was that implementing authentication involves more than simply creating a login page; the application must also handle user sessions, protected pages and related data appropriately. Overall, this week helped me understand how to make CampusEats more organised and suitable for an application with registered users.
