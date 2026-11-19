@@ -1,63 +1,115 @@
+import { useMemo } from 'react'
 import { CartContext } from './cart-context.js'
 import { useLocalStorage } from '../hooks/useLocalStorage.js'
-import { lineKey } from '../utils/lineKey.js'
+import { useAuth } from '../hooks/useAuth.js'
 
 export function CartProvider({ children }) {
-  const [cart, setCart] = useLocalStorage('campuseats-cart', [])
-  const [orders, setOrders] = useLocalStorage('campuseats-orders', [])
-  const count = cart.reduce((sum, line) => sum + line.qty, 0)
-  const total = cart.reduce((sum, line) => sum + line.item.price * line.qty, 0)
+  const { user, loading } = useAuth()
 
-  function addToCart(item, choice = {}) {
-    const newLine = { item, qty: 1, ...choice }
-    const key = lineKey(newLine)
-    setCart((prev) => {
-      const exists = prev.some((line) => lineKey(line) === key)
-      if (exists) {
-        return prev.map((line) =>
-          lineKey(line) === key ? { ...line, qty: line.qty + 1 } : line,
+  // Setiap pengguna mempunyai troli dan sejarah pesanan sendiri.
+  const cartKey = user?.uid
+    ? `ce-cart-${user.uid}`
+    : 'ce-cart-guest'
+
+  const ordersKey = user?.uid
+    ? `ce-orders-${user.uid}`
+    : 'ce-orders-guest'
+
+  const [cart, setCart] = useLocalStorage(cartKey, [])
+  const [orders, setOrders] = useLocalStorage(ordersKey, [])
+
+  // Tambah produk ke dalam troli.
+  function addToCart(item) {
+    setCart((previousCart) => {
+      const existingItem = previousCart.find(
+        (line) => line.item.id === item.id
+      )
+
+      if (existingItem) {
+        return previousCart.map((line) =>
+          line.item.id === item.id
+            ? { ...line, qty: line.qty + 1 }
+            : line
         )
       }
-      return [...prev, newLine]
+
+      return [...previousCart, { item, qty: 1 }]
     })
   }
 
-  function changeQty(key, delta) {
-    setCart((prev) =>
-      prev
+  // Ubah kuantiti produk dalam troli.
+  function changeQty(itemId, delta) {
+    setCart((previousCart) =>
+      previousCart
         .map((line) =>
-          lineKey(line) === key ? { ...line, qty: line.qty + delta } : line,
+          line.item.id === itemId
+            ? { ...line, qty: line.qty + delta }
+            : line
         )
-        .filter((line) => line.qty > 0),
+        .filter((line) => line.qty > 0)
     )
   }
 
-  function removeFromCart(key) {
-    setCart((prev) => prev.filter((line) => lineKey(line) !== key))
+  // Buang produk daripada troli.
+  function removeFromCart(itemId) {
+    setCart((previousCart) =>
+      previousCart.filter((line) => line.item.id !== itemId)
+    )
   }
 
+  // Bentuk pesanan berdasarkan kandungan troli.
   function placeOrder(details) {
     const order = {
-      id: Date.now(),
-      placedAt: new Date().toISOString(),
+      id: `order-${Date.now()}`,
       items: cart,
-      total,
+      total: cart.reduce(
+        (sum, line) => sum + line.item.price * line.qty,
+        0
+      ),
       ...details,
+      placedAt: new Date().toISOString(),
     }
-    setOrders((prev) => [order, ...prev])
+
+    setOrders((previousOrders) => [...previousOrders, order])
     setCart([])
+
+    return order
   }
 
-  const value = {
-    cart,
-    orders,
-    count,
-    total,
-    addToCart,
-    changeQty,
-    removeFromCart,
-    placeOrder,
+  // Kira jumlah unit dalam troli.
+  const count = cart.reduce(
+    (sum, line) => sum + line.qty,
+    0
+  )
+
+  // Kira jumlah harga semua produk.
+  const total = cart.reduce(
+    (sum, line) => sum + line.item.price * line.qty,
+    0
+  )
+
+  const contextValue = useMemo(
+    () => ({
+      cart: user ? cart : [],
+      orders: user ? orders : [],
+      count: user ? count : 0,
+      total: user ? total : 0,
+      addToCart,
+      changeQty,
+      removeFromCart,
+      placeOrder,
+    }),
+    [user, cart, orders, count, total]
+  )
+
+  // Tunggu Firebase menentukan status pengguna sebelum memaparkan data troli.
+  if (loading) {
+    return null
   }
 
-  return <CartContext.Provider value={value}>{children}</CartContext.Provider>
+  return (
+    <CartContext.Provider value={contextValue}>
+      {children}
+    </CartContext.Provider>
+  )
 }

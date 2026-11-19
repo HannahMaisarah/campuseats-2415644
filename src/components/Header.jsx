@@ -1,13 +1,17 @@
+
 import { NavLink, useNavigate } from 'react-router'
+import { useCart } from '../hooks/useCart.js'
 import { useAuth } from '../hooks/useAuth.js'
 
 function Header() {
+  const { count, clearCart } = useCart()
   const { user, logout } = useAuth()
   const navigate = useNavigate()
 
   async function handleLogout() {
     try {
       await logout()
+      clearCart()
       navigate('/')
     } catch (error) {
       console.error('Logout failed:', error)
@@ -15,10 +19,16 @@ function Header() {
   }
 
   return (
-    <header>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/cart">Cart</NavLink>
+    <header className="header">
+      <h1 className="logo">CampusEats</h1>
+
+      <nav className="nav">
+        <NavLink to="/" end>Vendors</NavLink>
+        <NavLink to="/orders">Orders</NavLink>
+
+        <NavLink to="/cart">
+          Cart <span className="badge">{count}</span>
+        </NavLink>
 
         {user ? (
           <>
