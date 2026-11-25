@@ -58,3 +58,26 @@ Add a new section every week, before you tag. Did not use AI? Write "None" under
 
 - One Thing AI Got Wrong
  - Some suggested code needed adjustment to match the existing project structure and React Router imports. I checked the existing files and adapted the code before using it.
+
+
+## Week 6 – Cloud Firestore: CRUD and Real-Time Data
+
+- Tool Used: ChatGPT
+
+- What I Asked
+ - Helped implement Firebase Firestore connection and services.
+ - Assisted with retrieving vendor and menu data using `onSnapshot`.
+ - Helped implement order creation and real-time order tracking.
+ - Assisted with updating pickup times and cancelling orders.
+ - Helped implement the spice-level badge and filter using Firestore queries.
+ - Helped troubleshoot missing menu documents and Firestore seeding issues.
+
+- What I Kept or Changed
+ - Used the suggested Firestore subscription approach with `onSnapshot`.
+ - Used Firestore `writeBatch()` to seed vendor and menu data.
+ - Implemented Firestore queries using `where()` for the spice-level filter.
+ - Reviewed and adapted the suggested code to fit the existing CampusEats project structure.
+ - Preserved the existing menu customisation and cart functionality.
+
+- One Thing the AI Got Wrong
+ - The AI initially focused on the spice-level filtering code when some menu documents were missing from Firestore. The actual issue required checking the JSON file location and the seeding process. This reminded me to verify Firestore documents and data sources instead of assuming that every problem comes from the React component.

@@ -1,48 +1,100 @@
+
 import { Link } from 'react-router'
-import { useCart } from '../hooks/useCart.js'
-import { lineKey } from '../utils/lineKey.js'
-import { describeLine } from '../utils/spice.js'
+
+import { useMyOrders } from '../hooks/useMyOrders.js'
+import { Loading } from '../components/Status.jsx'
+import OrderStatus from '../components/OrderStatus.jsx'
+import OrderActions from '../components/OrderActions.jsx'
 
 function OrdersPage() {
-  const { orders } = useCart()
+  const {
+    orders = [],
+    loading,
+    error
+  } = useMyOrders()
+
+  if (loading) {
+    return <Loading />
+  }
+
+  if (error) {
+    return (
+      <div className="card">
+        <p className="field-error">{error}</p>
+      </div>
+    )
+  }
 
   if (orders.length === 0) {
     return (
       <div className="card">
-        <p className="muted">You have not placed any orders yet.</p>
-        <Link to="/">Browse vendors</Link>
+        <p className="muted">
+          You have not placed any orders yet.
+        </p>
+
+        <Link to="/">
+          Browse vendors
+        </Link>
       </div>
     )
   }
 
   return (
     <section>
-      <h2 className="section-title">Your orders</h2>
-      {orders.map((order) => (
-        <article key={order.id} className="card order">
+      <h2 className="section-title">
+        Your orders
+      </h2>
+
+      {orders.map(order => (
+        <article
+          key={order.id}
+          className="card order"
+        >
           <h3>
-            Order for {order.name}{' '}
+            Order for {order.studentName}
+
             <span className="muted">
-              · {new Date(order.placedAt).toLocaleString('en-MY')}
+              {' · '}
+              {order.createdAt?.toDate
+                ? order.createdAt
+                    .toDate()
+                    .toLocaleString('en-MY')
+                : 'Just placed'}
             </span>
           </h3>
+
+          <p className="muted">
+            Vendor: {order.vendorName}
+          </p>
+
           <p className="muted">
             Pickup {order.pickupTime} at Mahallah {order.mahallah}
           </p>
+
+          <OrderStatus status={order.status} />
+
+          {/* B5: Show actions only while order is Received */}
+          {order.status === 'Received' && (
+            <OrderActions order={order} />
+          )}
+
           <ul className="order-items">
-            {order.items.map((line) => (
-              <li key={lineKey(line)}>
+            {order.items.map((line, index) => (
+              <li key={line.itemId || index}>
                 <span>
-                  {line.qty} × {line.item.name}
-                  {describeLine(line) && (
-                    <em className="muted"> · {describeLine(line)}</em>
-                  )}
+                  {line.qty} × {line.name}
                 </span>
-                <span>RM {(line.item.price * line.qty).toFixed(2)}</span>
+
+                <span>
+                  RM {(line.price * line.qty).toFixed(2)}
+                </span>
               </li>
             ))}
           </ul>
-          <p className="cart-total">Total: RM {order.total.toFixed(2)}</p>
+
+          <p className="cart-total">
+            Total: RM {order.total.toFixed(2)}
+          </p>
         </article>
       ))}
     </section>

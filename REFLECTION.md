@@ -115,3 +115,21 @@ One challenge I faced was configuring Firebase correctly because I encountered a
 My Reflection
 
 In Week 5, I learned how to integrate Firebase Authentication into my existing React application. I gained a better understanding of how authentication state can be shared using React Context and how Protected Routes can control access to different pages. I also learned how to connect Firebase authentication functions with the login, registration and logout processes. One important lesson was that implementing authentication involves more than simply creating a login page; the application must also handle user sessions, protected pages and related data appropriately. Overall, this week helped me understand how to make CampusEats more organised and suitable for an application with registered users.
+
+
+## Week 6
+
+1. Explain what happens from Place Order until the new order appears on the Orders page.
+
+When I click the Place Order button, the checkout form first validates the information entered by the user, including the name, Mahallah and pickup time. After validation, the CartPage calls the placeOrders() function from the orders service. The function saves the order information into the Firestore orders collection. The useMyOrders() hook subscribes to the current user's orders using subscribeToMyOrders(). This function uses onSnapshot() to listen for changes in Firestore. When a new order is created, Firestore sends an updated snapshot and the callback updates the orders state. Therefore, I do not need to call setOrders() manually because the real-time listener updates the page automatically.
+
+2. Why is orders a top-level collection, and why does each order copy vendorName, item name and price?
+
+The orders collection is stored at the top level because orders are independent records that need to be accessed and tracked separately from vendor menu data. Each order belongs to a particular student and contains information about the items purchased. The order also stores the vendor name, item name and price instead of relying only on document IDs. This preserves the order details even if a vendor later changes its menu or updates an item's price. It also makes it easier to display the order history without retrieving every vendor and menu document again.
+
+3. Personal feature: Firestore path, fields and code used.
+
+My personal feature for Week 6 is the spice-level badge and filter. The spice-level information is stored in the menu documents under the Firestore path vendors/{vendorId}/menu/{itemId}. Each menu item contains a numeric spiceLevel field with a value from 0 to 3. The menu subscription uses a Firestore query with where('spiceLevel', '<=', maxSpiceLevel) to retrieve items based on the selected maximum spice level. The application listens for menu changes using onSnapshot(). The badge displays the spice level retrieved from the Firestore menu document. However, I still need to resolve a seeding issue affecting some vendor menu documents before I can confirm that this feature works for every vendor.
+
+My Reflection
+Throughout Week 6, I gained a better understanding of how Cloud Firestore supports database operations and real-time data updates in a React application. I learned how to use onSnapshot() to listen for changes, writeBatch() to insert multiple documents and Firestore queries to retrieve specific data. I also understood the importance of organising database collections properly, especially when managing vendors, menu items and customer orders. One of the main challenges was identifying why certain menu items were missing even though the vendor information was available. This experience taught me that successful implementation requires not only writing the correct code but also ensuring that the data stored in the database is complete and consistent.

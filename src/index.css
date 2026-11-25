@@ -209,3 +209,23 @@ button.card:hover { border-color: var(--green-light); }
 .choice { margin: 0.15rem 0; font-size: 0.85rem; font-weight: 600; color: var(--green); }
 .order-items li > span:first-child { padding-right: 1rem; }
 .order-items li > span:last-child { white-space: nowrap; font-weight: 600; }
+
+
+/* B5: Order actions */
+
+.order-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin-top: 0.6rem;
+}
+
+.order-actions input {
+  width: auto;
+}
+
+.btn-small {
+  padding: 0.3rem 0.8rem;
+  font-size: 0.85rem;
+}

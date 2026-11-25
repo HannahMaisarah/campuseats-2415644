@@ -1,3 +1,4 @@
+
 import MenuItemCard from './MenuItemCard.jsx'
 import { useCart } from '../hooks/useCart.js'
 
@@ -5,13 +6,21 @@ function MenuList({ items }) {
   const { addToCart } = useCart()
 
   if (!items || items.length === 0) {
-    return <p className="muted">No items on this menu yet.</p>
+    return (
+      <p className="muted">
+        No menu items match this spice level.
+      </p>
+    )
   }
 
   return (
     <div className="grid">
       {items.map((item) => (
-        <MenuItemCard key={item.id} item={item} onAdd={addToCart} />
+        <MenuItemCard
+          key={item.id}
+          item={item}
+          onAdd={addToCart}
+        />
       ))}
     </div>
   )

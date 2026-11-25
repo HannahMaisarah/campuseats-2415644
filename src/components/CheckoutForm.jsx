@@ -1,80 +1,155 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
-import { useCart } from '../hooks/useCart.js'
+import { useEffect, useState } from 'react'
 
-const MAHALLAHS = ['Ali', 'Aminah', 'Faruq', 'Asiah', 'Bilal', 'Hafsa', 'Uthman', 'Zubair']
+function CheckoutForm({
+  defaultName = '',
+  onPlaceOrder,
+  submitting = false
+}) {
+  const [values, setValues] = useState({
+    name: defaultName,
+    mahallah: '',
+    pickupTime: ''
+  })
 
-function validate(values) {
-  const errors = {}
-  if (values.name.trim().length < 3) {
-    errors.name = 'Enter your name (at least 3 characters).'
-  }
-  if (!values.mahallah) {
-    errors.mahallah = 'Choose your mahallah.'
-  }
-  if (!values.pickupTime) {
-    errors.pickupTime = 'Choose a pickup time.'
-  } else if (values.pickupTime < '07:00' || values.pickupTime > '22:00') {
-    errors.pickupTime = 'Pickup time must be between 07:00 and 22:00.'
-  }
-  return errors
-}
+  const [error, setError] = useState('')
 
-function CheckoutForm() {
-  const { placeOrder } = useCart()
-  const navigate = useNavigate()
-  const [values, setValues] = useState({ name: '', mahallah: '', pickupTime: '' })
-  const [errors, setErrors] = useState({})
+  useEffect(() => {
+    setValues(prev => ({
+      ...prev,
+      name: defaultName
+    }))
+  }, [defaultName])
 
-  // One handler for every input: the input's name matches a key in values.
   function handleChange(event) {
     const { name, value } = event.target
-    setValues((prev) => ({ ...prev, [name]: value }))
+
+    setValues(prev => ({
+      ...prev,
+      [name]: value
+    }))
   }
 
-  function handleSubmit(event) {
-    event.preventDefault() // stop the page reloading
-    const found = validate(values)
-    setErrors(found)
-    if (Object.keys(found).length === 0) {
-      placeOrder(values)   // save the order and empty the cart
-      navigate('/orders')  // then go to the orders page
+  async function handleSubmit(event) {
+    event.preventDefault()
+    setError('')
+
+    if (values.name.trim().length < 3) {
+      setError('Please enter your full name.')
+      return
+    }
+
+    if (!values.mahallah) {
+      setError('Please select your Mahallah.')
+      return
+    }
+
+    if (!values.pickupTime) {
+      setError('Please select your pickup time.')
+      return
+    }
+
+    if (
+      values.pickupTime < '07:00' ||
+      values.pickupTime > '22:00'
+    ) {
+      setError('Pickup time must be between 07:00 and 22:00.')
+      return
+    }
+
+    try {
+      await onPlaceOrder({
+        ...values,
+        name: values.name.trim()
+      })
+    } catch (err) {
+      setError(err.message || 'Unable to submit your order.')
     }
   }
 
+  const fieldStyle = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '5px',
+    marginBottom: '12px'
+  }
+
   return (
-    <form className="card form" onSubmit={handleSubmit} noValidate>
-      <h3>Checkout</h3>
+    <form
+      className="card checkout-form"
+      onSubmit={handleSubmit}
+    >
+      <h2 className="section-title">Checkout</h2>
 
-      <label htmlFor="name">Name</label>
-      <input id="name" name="name" value={values.name} onChange={handleChange} />
-      {errors.name && <p className="field-error">{errors.name}</p>}
+      {/* Full Name */}
+      <div style={fieldStyle}>
+        <label htmlFor="name">Full Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          value={values.name}
+          onChange={handleChange}
+          placeholder="Enter your full name"
+          required
+        />
+      </div>
 
-      <label htmlFor="mahallah">Mahallah</label>
-      <select
-        id="mahallah"
-        name="mahallah"
-        value={values.mahallah}
-        onChange={handleChange}
+      {/* Mahallah */}
+      <div style={fieldStyle}>
+        <label htmlFor="mahallah">Mahallah</label>
+        <select
+          id="mahallah"
+          name="mahallah"
+          value={values.mahallah}
+          onChange={handleChange}
+          required
+        >
+          <option value="">Select Mahallah</option>
+          {[
+            'Ali',
+            'Aminah',
+            'Faruq',
+            'Asiah',
+            'Bilal',
+            'Hafsa',
+            'Uthman',
+            'Zubair'
+          ].map(mahallah => (
+            <option key={mahallah} value={mahallah}>
+              {mahallah}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Pickup Time */}
+      <div style={fieldStyle}>
+        <label htmlFor="pickupTime">Pickup Time</label>
+        <input
+          id="pickupTime"
+          name="pickupTime"
+          type="time"
+          min="07:00"
+          max="22:00"
+          value={values.pickupTime}
+          onChange={handleChange}
+          required
+        />
+      </div>
+
+      {error && (
+        <p className="field-error" role="alert">
+          {error}
+        </p>
+      )}
+
+      <button
+        type="submit"
+        className="btn"
+        disabled={submitting}
       >
-        <option value="">Select…</option>
-        {MAHALLAHS.map((m) => (
-          <option key={m} value={m}>{m}</option>
-        ))}
-      </select>
-      {errors.mahallah && <p className="field-error">{errors.mahallah}</p>}
-
-      <label htmlFor="pickupTime">Pickup time</label>
-      <input
-        id="pickupTime"
-        name="pickupTime"
-        type="time"
-        value={values.pickupTime}
-        onChange={handleChange}
-      />
-      {errors.pickupTime && <p className="field-error">{errors.pickupTime}</p>}
-
-      <button type="submit" className="btn">Place order</button>
+        {submitting ? 'Placing Order...' : 'Place Order'}
+      </button>
     </form>
   )
 }
